@@ -14,6 +14,8 @@ export default function Sidebar() {
   const navItems = [
     { href: '/', icon: Home, label: t('sidebar.homeFeed') },
     { href: '/search', icon: Search, label: t('sidebar.discoverStudents') },
+    { href: '/search', icon: Users, label: t('sidebar.friends') },
+    { href: '/search', icon: BookOpen, label: t('sidebar.studyGroups') },
     { href: '/universities', icon: Globe2, label: t('sidebar.universities') },
   ];
 
