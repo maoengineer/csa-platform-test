@@ -1,0 +1,45 @@
+
+> csa-platform@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.29
+
+   Creating an optimized production build ...
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (215kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ ✓ Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ƒ /                                    4.99 kB         227 kB
+├ ƒ /_not-found                          873 B          88.1 kB
+├ ƒ /[username]                          2.11 kB         224 kB
+├ ƒ /admin                               2.26 kB         102 kB
+├ ƒ /admin/reports                       2.9 kB          160 kB
+├ ƒ /admin/users                         2.28 kB         168 kB
+├ ƒ /forgot-password                     1.86 kB         180 kB
+├ ƒ /login                               2.52 kB         181 kB
+├ ƒ /messages                            1.48 kB         213 kB
+├ ƒ /messages/[userId]                   2.22 kB         214 kB
+├ ƒ /moderator                           138 B          87.3 kB
+├ ƒ /register                            3.62 kB         182 kB
+├ ƒ /search                              3.31 kB         212 kB
+├ ƒ /settings                            5.7 kB          214 kB
+└ ƒ /universities                        1.57 kB         210 kB
++ First Load JS shared by all            87.2 kB
+  ├ chunks/117-303dbc4a473664dc.js       31.6 kB
+  ├ chunks/fd9d1056-f6860099df10d546.js  53.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+ƒ Middleware                             78.9 kB
+
+ƒ  (Dynamic)  server-rendered on demand
+
