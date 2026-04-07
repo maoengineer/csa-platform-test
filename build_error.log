@@ -1,0 +1,36 @@
+
+> csa-platform@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.29
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./app/admin/reports/page.tsx
+Module not found: Can't resolve '@/lib/supabase/client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/admin/users/page.tsx
+Module not found: Can't resolve '@/lib/supabase/client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/forgot-password/page.tsx
+Module not found: Can't resolve '@/lib/supabase/client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/login/page.tsx
+Module not found: Can't resolve '@/lib/supabase/client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./app/messages/[userId]/page.tsx
+Module not found: Can't resolve '@/lib/supabase/client'
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+> Build failed because of webpack errors

@@ -1,0 +1,26 @@
+
+> csa-platform@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.29
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/admin/page.tsx:34:32
+Type error: Type '{ totalUsers: number; postsToday: number; pendingReports: number; pendingResets: number; recentActivity: { id: any; full_name: any; username: any; role: any; created_at: any; university: { abbreviation: any; }[]; }[]; }' is not assignable to type '{ totalUsers: number; postsToday: number; pendingReports: number; pendingResets: number; recentActivity: { id: string; full_name: string; username: string; role: string; created_at: string; university?: { ...; } | undefined; }[]; }'.
+  Types of property 'recentActivity' are incompatible.
+    Type '{ id: any; full_name: any; username: any; role: any; created_at: any; university: { abbreviation: any; }[]; }[]' is not assignable to type '{ id: string; full_name: string; username: string; role: string; created_at: string; university?: { abbreviation: string; } | undefined; }[]'.
+      Type '{ id: any; full_name: any; username: any; role: any; created_at: any; university: { abbreviation: any; }[]; }' is not assignable to type '{ id: string; full_name: string; username: string; role: string; created_at: string; university?: { abbreviation: string; } | undefined; }'.
+        Types of property 'university' are incompatible.
+          Property 'abbreviation' is missing in type '{ abbreviation: any; }[]' but required in type '{ abbreviation: string; }'.
+
+[0m [90m 32 |[39m [36mexport[39m [36mdefault[39m [36masync[39m [36mfunction[39m [33mAdminDashboard[39m() {[0m
+[0m [90m 33 |[39m   [36mconst[39m stats [33m=[39m [36mawait[39m getAdminStats()[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 34 |[39m   [36mreturn[39m [33m<[39m[33mAdminDashboardClient[39m stats[33m=[39m{stats} [33m/[39m[33m>[39m[33m;[39m[0m
+[0m [90m    |[39m                                [31m[1m^[22m[39m[0m
+[0m [90m 35 |[39m }[0m
+[0m [90m 36 |[39m[0m
+Next.js build worker exited with code: 1 and signal: null

@@ -1,0 +1,375 @@
+{
+  "nav": {
+    "home": "Home",
+    "discover": "Discover",
+    "friends": "Friends",
+    "messages": "Messages",
+    "notifications": "Notifications",
+    "search": "Search students, posts...",
+    "signIn": "Sign In",
+    "joinFree": "Join Free",
+    "profile": "Profile",
+    "settings": "Settings",
+    "signOut": "Sign Out",
+    "admin": "Admin Panel",
+    "moderator": "Moderator"
+  },
+  "sidebar": {
+    "homeFeed": "Home Feed",
+    "discoverStudents": "Discover Students",
+    "friends": "Friends",
+    "studyGroups": "Study Groups",
+    "universities": "48 Universities",
+    "joinCta": {
+      "title": "Join CSA Today",
+      "subtitle": "Connect with students from 48 universities & institutes across Cambodia.",
+      "createAccount": "Create Free Account",
+      "signIn": "Sign In"
+    }
+  },
+  "rightPanel": {
+    "welcomeTitle": "Welcome to CSA",
+    "welcomeSubtitle": "Cambodia Student Association",
+    "welcomeDesc": "The exclusive social network for Cambodian university students. Verified community, real connections.",
+    "createAccount": "Create an Account",
+    "signIn": "Sign In",
+    "universitiesTitle": "{{count}} Universities on CSA",
+    "universitiesDesc": "{{public}} public · {{private}} private",
+    "suggestedTitle": "People You May Know",
+    "followAll": "See all suggestions"
+  },
+  "feed": {
+    "postPlaceholder": "Share something with Cambodian students...",
+    "noMorePosts": "You're all caught up!",
+    "loadingPosts": "Loading posts...",
+    "guestPrompt": {
+      "title": "See posts from Cambodian students",
+      "desc": "Join CSA to read posts, react, comment, and connect with students from 48 universities.",
+      "joinFree": "Join Free",
+      "signIn": "Sign In"
+    }
+  },
+  "post": {
+    "like": "Like",
+    "love": "Love",
+    "haha": "Haha",
+    "sad": "Sad",
+    "angry": "Angry",
+    "comment": "Comment",
+    "share": "Share",
+    "report": "Report",
+    "edit": "Edit",
+    "delete": "Delete",
+    "announcement": "Announcement",
+    "just_now": "Just now",
+    "ago": "ago",
+    "edited": "edited",
+    "deleteConfirm": "Are you sure you want to delete this post?",
+    "deleteSuccess": "Post deleted successfully",
+    "reportSuccess": "Report submitted. Thank you!",
+    "reactions": "{{count}} reactions"
+  },
+  "editor": {
+    "title": "Create Post",
+    "placeholder": "Share your thoughts with Cambodian students...",
+    "bold": "Bold",
+    "italic": "Italic",
+    "underline": "Underline",
+    "strikethrough": "Strikethrough",
+    "fontSize": "Font size",
+    "fontFamily": "Font",
+    "textAlign": "Align",
+    "color": "Color",
+    "emoji": "Emoji",
+    "preview": "Preview",
+    "post": "Post",
+    "cancel": "Cancel",
+    "charCount": "{{count}}/5000",
+    "charWarning": "Approaching character limit",
+    "fontSizes": {
+      "small": "Small",
+      "normal": "Normal",
+      "large": "Large",
+      "xlarge": "X-Large"
+    },
+    "fonts": {
+      "inter": "Inter",
+      "roboto": "Roboto",
+      "hanuman": "Hanuman (Khmer)",
+      "kantumruy": "Kantumruy Pro (Khmer)",
+      "siemreap": "Siemreap (Khmer)"
+    },
+    "aligns": {
+      "left": "Left",
+      "center": "Center",
+      "right": "Right"
+    }
+  },
+  "auth": {
+    "welcomeBack": "Welcome Back",
+    "signInSubtitle": "Sign in to your CSA account",
+    "email": "Email Address",
+    "password": "Password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "joinNow": "Join now",
+    "signingIn": "Signing in...",
+    "errors": {
+      "invalidCredentials": "Invalid email or password",
+      "emailRequired": "Email is required",
+      "passwordRequired": "Password is required",
+      "banned": "Your account has been suspended. Contact support.",
+      "generic": "Something went wrong. Please try again."
+    },
+    "register": {
+      "title": "Join CSA",
+      "subtitle": "Create your student account",
+      "step1": "Personal Info",
+      "step2": "University",
+      "step3": "Student Details",
+      "fullName": "Full Name",
+      "username": "Username",
+      "usernameHint": "Lowercase letters, numbers, and underscores only",
+      "email": "Email Address",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "university": "University",
+      "universitySearch": "Search university...",
+      "department": "Department",
+      "departmentSelect": "Select department",
+      "studentId": "Student ID",
+      "yearOfStudy": "Year of Study",
+      "bio": "Short Bio (optional)",
+      "bioPlaceholder": "Tell other students about yourself...",
+      "createAccount": "Create Account",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "creating": "Creating your account...",
+      "success": "Account created! Welcome to CSA!",
+      "errors": {
+        "usernameExists": "Username already taken",
+        "emailExists": "Email already registered",
+        "passwordMismatch": "Passwords do not match",
+        "passwordTooShort": "Password must be at least 8 characters",
+        "fullNameRequired": "Full name is required",
+        "usernameRequired": "Username is required",
+        "universityRequired": "Please select your university",
+        "departmentRequired": "Please select your department",
+        "generic": "Registration failed. Please try again."
+      },
+      "years": {
+        "1": "Year 1",
+        "2": "Year 2",
+        "3": "Year 3",
+        "4": "Year 4",
+        "5": "Year 5",
+        "6": "Year 6"
+      }
+    },
+    "passwordReset": {
+      "title": "Reset Password Request",
+      "subtitle": "Can't log in? Submit a request to our moderators",
+      "fullName": "Full Name",
+      "studentId": "Student ID",
+      "university": "University",
+      "email": "Registered Email",
+      "description": "Describe your issue",
+      "descriptionPlaceholder": "Explain why you need a password reset...",
+      "submit": "Submit Request",
+      "submitting": "Submitting...",
+      "success": "Request submitted! Our moderators will review it shortly.",
+      "backToLogin": "Back to Login",
+      "note": "Your password will be reset to a temporary password. You'll be asked to change it on your next login."
+    }
+  },
+  "profile": {
+    "posts": "Posts",
+    "about": "About",
+    "university": "University",
+    "department": "Department",
+    "year": "Year {{year}}",
+    "memberSince": "Member since {{date}}",
+    "studentId": "Student ID",
+    "message": "Message",
+    "follow": "Follow",
+    "unfollow": "Unfollow",
+    "editProfile": "Edit Profile",
+    "noPosts": "No posts yet",
+    "banned": "This account has been suspended"
+  },
+  "settings": {
+    "title": "Settings",
+    "tabs": {
+      "profile": "Profile",
+      "university": "University",
+      "account": "Account",
+      "security": "Security",
+      "language": "Language",
+      "privacy": "Privacy"
+    },
+    "profile": {
+      "title": "Profile Settings",
+      "fullName": "Full Name",
+      "bio": "Bio",
+      "bioPlaceholder": "Tell students about yourself...",
+      "yearOfStudy": "Year of Study",
+      "avatar": "Profile Photo",
+      "changeAvatar": "Change Photo",
+      "removeAvatar": "Remove",
+      "save": "Save Changes",
+      "saving": "Saving...",
+      "success": "Profile updated!"
+    },
+    "university": {
+      "title": "University & Department",
+      "current": "Current",
+      "change": "Change University",
+      "warning": "Changing your university will update your profile. Other students may notice the change.",
+      "confirm": "Confirm Change",
+      "save": "Save",
+      "success": "University updated!"
+    },
+    "account": {
+      "title": "Account Settings",
+      "username": "Username",
+      "email": "Email",
+      "emailNote": "Changing email requires verification",
+      "save": "Save",
+      "success": "Account updated!"
+    },
+    "security": {
+      "title": "Security",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "changePassword": "Change Password",
+      "success": "Password changed successfully!",
+      "errors": {
+        "wrongPassword": "Current password is incorrect",
+        "mismatch": "New passwords do not match",
+        "tooShort": "Password must be at least 8 characters"
+      }
+    },
+    "language": {
+      "title": "Language Preference",
+      "english": "English",
+      "khmer": "ភាសាខ្មែរ",
+      "save": "Save"
+    }
+  },
+  "report": {
+    "title": "Report Content",
+    "subtitle": "Help us keep CSA safe",
+    "reasons": {
+      "politics": "Political Content",
+      "adult": "Adult / Inappropriate",
+      "fake": "Fake / Misinformation",
+      "harassment": "Harassment",
+      "spam": "Spam",
+      "impersonation": "Impersonation",
+      "other": "Other"
+    },
+    "details": "Additional details (optional)",
+    "detailsPlaceholder": "Provide more context...",
+    "submit": "Submit Report",
+    "submitting": "Submitting...",
+    "success": "Thank you! Your report has been submitted.",
+    "cancel": "Cancel"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search students by name or username...",
+    "noResults": "No students found",
+    "sameUniversity": "Same University",
+    "sameDepartment": "Same Department",
+    "filters": {
+      "all": "All",
+      "university": "University",
+      "department": "Department"
+    }
+  },
+  "messages": {
+    "title": "Messages",
+    "newMessage": "New Message",
+    "searchConversations": "Search conversations...",
+    "noMessages": "No messages yet",
+    "typeMessage": "Type a message...",
+    "send": "Send",
+    "online": "Online",
+    "lastSeen": "Last seen {{time}}",
+    "unread": "{{count}} unread"
+  },
+  "admin": {
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "posts": "Posts",
+    "universities": "Universities",
+    "moderators": "Moderators",
+    "reports": "Reports",
+    "analytics": "Analytics",
+    "settings": "Settings",
+    "title": "Admin Panel",
+    "stats": {
+      "totalUsers": "Total Users",
+      "postsToday": "Posts Today",
+      "activeUsers": "Active Users",
+      "pendingReports": "Pending Reports"
+    }
+  },
+  "moderator": {
+    "title": "Moderator Panel",
+    "welcome": "Moderator Dashboard",
+    "reports": "Report Queue",
+    "passwords": "Password Resets",
+    "users": "User Management",
+    "universities": "University Editor"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "yes": "Yes",
+    "no": "No",
+    "or": "or",
+    "and": "and",
+    "more": "more",
+    "viewAll": "View all",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "noData": "No data available",
+    "pagination": {
+      "page": "Page {{page}} of {{total}}",
+      "next": "Next",
+      "prev": "Previous"
+    }
+  },
+  "universities": {
+    "title": "Universities on CSA",
+    "subtitle": "Connect with students from all Cambodian universities",
+    "public": "Public",
+    "private": "Private",
+    "departments": "{{count}} departments",
+    "students": "{{count}} students"
+  },
+  "errors": {
+    "404": "Page not found",
+    "403": "You don't have permission to access this page",
+    "500": "Internal server error",
+    "maintenance": "CSA is under maintenance. We'll be back soon!",
+    "network": "Network error. Check your connection."
+  }
+}

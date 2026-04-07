@@ -1,0 +1,24 @@
+
+> csa-platform@1.0.0 type-check
+> tsc --noEmit
+
+app/admin/page.tsx(34,32): error TS2322: Type '{ totalUsers: number; postsToday: number; pendingReports: number; pendingResets: number; recentActivity: { id: any; full_name: any; username: any; role: any; created_at: any; university: { abbreviation: any; }[]; }[]; }' is not assignable to type '{ totalUsers: number; postsToday: number; pendingReports: number; pendingResets: number; recentActivity: { id: string; full_name: string; username: string; role: string; created_at: string; university?: { ...; } | undefined; }[]; }'.
+  Types of property 'recentActivity' are incompatible.
+    Type '{ id: any; full_name: any; username: any; role: any; created_at: any; university: { abbreviation: any; }[]; }[]' is not assignable to type '{ id: string; full_name: string; username: string; role: string; created_at: string; university?: { abbreviation: string; } | undefined; }[]'.
+      Type '{ id: any; full_name: any; username: any; role: any; created_at: any; university: { abbreviation: any; }[]; }' is not assignable to type '{ id: string; full_name: string; username: string; role: string; created_at: string; university?: { abbreviation: string; } | undefined; }'.
+        Types of property 'university' are incompatible.
+          Property 'abbreviation' is missing in type '{ abbreviation: any; }[]' but required in type '{ abbreviation: string; }'.
+lib/supabase/middleware.ts(15,16): error TS7006: Parameter 'cookiesToSet' implicitly has an 'any' type.
+lib/supabase/middleware.ts(16,35): error TS7031: Binding element 'name' implicitly has an 'any' type.
+lib/supabase/middleware.ts(16,41): error TS7031: Binding element 'value' implicitly has an 'any' type.
+lib/supabase/middleware.ts(20,35): error TS7031: Binding element 'name' implicitly has an 'any' type.
+lib/supabase/middleware.ts(20,41): error TS7031: Binding element 'value' implicitly has an 'any' type.
+lib/supabase/middleware.ts(20,48): error TS7031: Binding element 'options' implicitly has an 'any' type.
+lib/supabase/server.ts(15,16): error TS7006: Parameter 'cookiesToSet' implicitly has an 'any' type.
+lib/supabase/server.ts(17,37): error TS7031: Binding element 'name' implicitly has an 'any' type.
+lib/supabase/server.ts(17,43): error TS7031: Binding element 'value' implicitly has an 'any' type.
+lib/supabase/server.ts(17,50): error TS7031: Binding element 'options' implicitly has an 'any' type.
+lib/supabase/server.ts(40,16): error TS7006: Parameter 'cookiesToSet' implicitly has an 'any' type.
+lib/supabase/server.ts(42,37): error TS7031: Binding element 'name' implicitly has an 'any' type.
+lib/supabase/server.ts(42,43): error TS7031: Binding element 'value' implicitly has an 'any' type.
+lib/supabase/server.ts(42,50): error TS7031: Binding element 'options' implicitly has an 'any' type.

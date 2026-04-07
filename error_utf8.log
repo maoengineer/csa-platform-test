@@ -1,0 +1,113 @@
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn ERESOLVE overriding peer dependency
+npm warn While resolving: csa-platform@1.0.0
+npm warn Found: @types/react@19.2.14
+npm warn node_modules/@types/react
+npm warn   dev @types/react@"^18.3.20" from the root project
+npm warn   67 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm warn
+npm warn Could not resolve dependency:
+npm warn peer @types/react@"^19.2.0" from @types/react-dom@19.2.3
+npm warn node_modules/@types/react-dom
+npm warn   dev @types/react-dom@"^18.3.5" from the root project
+npm warn   35 more (@radix-ui/react-arrow, @radix-ui/react-primitive, ...)
+npm error code ETARGET
+npm error notarget No matching version found for next-intl@^3.27.0.
+npm error notarget In most cases you or one of your dependencies are requesting
+npm error notarget a package version that doesn't exist.
+npm error A complete log of this run can be found in: C:\Users\najam\AppData\Local\npm-cache\_logs\2026-04-07T03_44_43_019Z-debug-0.log

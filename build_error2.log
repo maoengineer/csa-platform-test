@@ -1,0 +1,603 @@
+
+> csa-platform@1.0.0 build
+> next build
+
+  ▲ Next.js 14.2.29
+
+   Creating an optimized production build ...
+Failed to compile.
+
+./components/layout/Navbar.tsx
+Error: 
+  [31mx[0m the name `cn` is defined multiple times
+     ,-[[36;1;4mC:\Users\najam\Hllo\components\layout\Navbar.tsx[0m:13:1]
+ [2m 13[0m | import { useAuth } from '@/components/providers/AuthProvider';
+ [2m 14[0m | import { useTheme } from '@/components/providers/ThemeProvider';
+ [2m 15[0m | import { createClient } from '@/lib/supabase/client';
+ [2m 16[0m | import { cn } from '@/lib/utils';
+     : [31;1m         ^|[0m
+     :           [31;1m`-- [31;1mprevious definition of `cn` here[0m[0m
+ [2m 17[0m | import toast from 'react-hot-toast';
+ [2m 18[0m | 
+ [2m 19[0m | export default function Navbar() {
+ [2m 20[0m |   const t = useTranslations();
+ [2m 21[0m |   const { user, loading } = useAuth();
+ [2m 22[0m |   const { theme, toggleTheme } = useTheme();
+ [2m 23[0m |   const router = useRouter();
+ [2m 24[0m |   const supabase = createClient();
+ [2m 25[0m | 
+ [2m 26[0m |   const [mobileOpen, setMobileOpen] = useState(false);
+ [2m 27[0m |   const [unreadMessages, setUnreadMessages] = useState(0);
+ [2m 28[0m |   const [unreadNotifs, setUnreadNotifs] = useState(0);
+ [2m 29[0m |   const [locale, setLocale] = useState('en');
+ [2m 30[0m | 
+ [2m 31[0m |   useEffect(() => {
+ [2m 32[0m |     const stored = document.cookie
+ [2m 33[0m |       .split(';')
+ [2m 34[0m |       .find(c => c.trim().startsWith('NEXT_LOCALE='))
+ [2m 35[0m |       ?.split('=')[1] || 'en';
+ [2m 36[0m |     setLocale(stored);
+ [2m 37[0m |   }, []);
+ [2m 38[0m | 
+ [2m 39[0m |   useEffect(() => {
+ [2m 40[0m |     if (!user) return;
+ [2m 41[0m | 
+ [2m 42[0m |     const fetchCounts = async () => {
+ [2m 43[0m |       const [{ count: msgs }, { count: notifs }] = await Promise.all([
+ [2m 44[0m |         supabase.from('messages').select('*', { count: 'exact', head: true })
+ [2m 45[0m |           .eq('receiver_id', user.id).eq('is_read', false),
+ [2m 46[0m |         supabase.from('notifications').select('*', { count: 'exact', head: true })
+ [2m 47[0m |           .eq('user_id', user.id).eq('is_read', false),
+ [2m 48[0m |       ]);
+ [2m 49[0m |       setUnreadMessages(msgs || 0);
+ [2m 50[0m |       setUnreadNotifs(notifs || 0);
+ [2m 51[0m |     };
+ [2m 52[0m | 
+ [2m 53[0m |     fetchCounts();
+ [2m 54[0m |   }, [user, supabase]);
+ [2m 55[0m | 
+ [2m 56[0m |   const handleSignOut = async () => {
+ [2m 57[0m |     await supabase.auth.signOut();
+ [2m 58[0m |     router.push('/');
+ [2m 59[0m |     router.refresh();
+ [2m 60[0m |     toast.success('Signed out successfully');
+ [2m 61[0m |   };
+ [2m 62[0m | 
+ [2m 63[0m |   const toggleLocale = () => {
+ [2m 64[0m |     const next = locale === 'en' ? 'kh' : 'en';
+ [2m 65[0m |     document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000`;
+ [2m 66[0m |     setLocale(next);
+ [2m 67[0m |     window.location.reload();
+ [2m 68[0m |   };
+ [2m 69[0m | 
+ [2m 70[0m |   return (
+ [2m 71[0m |     <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800">
+ [2m 72[0m |       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center gap-3">
+ [2m 73[0m |         {/* Logo */}
+ [2m 74[0m |         <Link href="/" className="flex items-center gap-2 shrink-0 group">
+ [2m 75[0m |           <div className="w-8 h-8 rounded-lg csa-hero-gradient flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+ [2m 76[0m |             <span className="text-lg">🏛️</span>
+ [2m 77[0m |           </div>
+ [2m 78[0m |           <span className="font-bold text-lg text-slate-900 dark:text-white tracking-tight">
+ [2m 79[0m |             <span className="text-transparent bg-clip-text bg-gradient-to-r from-csa-blue-900 to-csa-purple-600">CSA</span>
+ [2m 80[0m |           </span>
+ [2m 81[0m |         </Link>
+ [2m 82[0m | 
+ [2m 83[0m |         {/* Search bar */}
+ [2m 84[0m |         <div className="hidden md:flex flex-1 max-w-md mx-4">
+ [2m 85[0m |           <Link
+ [2m 86[0m |             href="/search"
+ [2m 87[0m |             className="w-full flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-400 text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+ [2m 88[0m |           >
+ [2m 89[0m |             <Search className="w-4 h-4" />
+ [2m 90[0m |             <span>{t('nav.search')}</span>
+ [2m 91[0m |           </Link>
+ [2m 92[0m |         </div>
+ [2m 93[0m | 
+ [2m 94[0m |         {/* Center nav icons */}
+ [2m 95[0m |         <nav className="hidden md:flex items-center gap-1 absolute left-1/2 transform -translate-x-1/2">
+ [2m 96[0m |           {[
+ [2m 97[0m |             { href: '/', icon: Home, label: t('nav.home') },
+ [2m 98[0m |             { href: '/search', icon: Search, label: t('nav.discover') },
+ [2m 99[0m |             { href: '/universities', icon: BookOpen, label: 'Universities' },
+ [2m100[0m |           ].map(({ href, icon: Icon, label }) => (
+ [2m101[0m |             <Link
+ [2m102[0m |               key={href}
+ [2m103[0m |               href={href}
+ [2m104[0m |               className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-csa-blue-900 dark:hover:text-blue-400 transition-all"
+ [2m105[0m |               title={label}
+ [2m106[0m |             >
+ [2m107[0m |               <Icon className="w-5 h-5" />
+ [2m108[0m |             </Link>
+ [2m109[0m |           ))}
+ [2m110[0m |         </nav>
+ [2m111[0m | 
+ [2m112[0m |         {/* Right actions */}
+ [2m113[0m |         <div className="ml-auto flex items-center gap-2">
+ [2m114[0m |           {/* Language toggle */}
+ [2m115[0m |           <button
+ [2m116[0m |             onClick={toggleLocale}
+ [2m117[0m |             className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+ [2m118[0m |             title="Toggle language"
+ [2m119[0m |           >
+ [2m120[0m |             <Globe className="w-4 h-4" />
+ [2m121[0m |             <span>{locale === 'en' ? 'EN' : 'ខ្មែរ'}</span>
+ [2m122[0m |           </button>
+ [2m123[0m | 
+ [2m124[0m |           {/* Dark mode toggle */}
+ [2m125[0m |           <button
+ [2m126[0m |             onClick={toggleTheme}
+ [2m127[0m |             className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+ [2m128[0m |             aria-label="Toggle dark mode"
+ [2m129[0m |           >
+ [2m130[0m |             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+ [2m131[0m |           </button>
+ [2m132[0m | 
+ [2m133[0m |           {!loading && (
+ [2m134[0m |             <>
+ [2m135[0m |               {user ? (
+ [2m136[0m |                 <>
+ [2m137[0m |                   {/* Messages */}
+ [2m138[0m |                   <Link
+ [2m139[0m |                     href="/messages"
+ [2m140[0m |                     className="relative p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+ [2m141[0m |                     aria-label={t('nav.messages')}
+ [2m142[0m |                   >
+ [2m143[0m |                     <MessageSquare className="w-5 h-5" />
+ [2m144[0m |                     {unreadMessages > 0 && (
+ [2m145[0m |                       <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 font-bold">
+ [2m146[0m |                         {unreadMessages > 9 ? '9+' : unreadMessages}
+ [2m147[0m |                       </span>
+ [2m148[0m |                     )}
+ [2m149[0m |                   </Link>
+ [2m150[0m | 
+ [2m151[0m |                   {/* Notifications */}
+ [2m152[0m |                   <Link
+ [2m153[0m |                     href="/notifications"
+ [2m154[0m |                     className="relative p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+ [2m155[0m |                     aria-label={t('nav.notifications')}
+ [2m156[0m |                   >
+ [2m157[0m |                     <Bell className="w-5 h-5" />
+ [2m158[0m |                     {unreadNotifs > 0 && (
+ [2m159[0m |                       <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 font-bold">
+ [2m160[0m |                         {unreadNotifs > 9 ? '9+' : unreadNotifs}
+ [2m161[0m |                       </span>
+ [2m162[0m |                     )}
+ [2m163[0m |                   </Link>
+ [2m164[0m | 
+ [2m165[0m |                   {/* User menu */}
+ [2m166[0m |                   <DropdownMenu.Root>
+ [2m167[0m |                     <DropdownMenu.Trigger asChild>
+ [2m168[0m |                       <button className="flex items-center gap-2 p-1 pr-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group">
+ [2m169[0m |                         <div className="w-8 h-8 rounded-lg overflow-hidden bg-gradient-to-br from-csa-blue-900 to-csa-purple-600 flex items-center justify-center">
+ [2m170[0m |                           {user.avatar_url ? (
+ [2m171[0m |                             <img src={user.avatar_url} alt={user.full_name} className="w-full h-full object-cover" />
+ [2m172[0m |                           ) : (
+ [2m173[0m |                             <span className="text-white font-semibold text-sm">
+ [2m174[0m |                               {user.full_name.charAt(0).toUpperCase()}
+ [2m175[0m |                             </span>
+ [2m176[0m |                           )}
+ [2m177[0m |                         </div>
+ [2m178[0m |                         <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 transition-transform group-data-[state=open]:rotate-180" />
+ [2m179[0m |                       </button>
+ [2m180[0m |                     </DropdownMenu.Trigger>
+ [2m181[0m |                     <DropdownMenu.Portal>
+ [2m182[0m |                       <DropdownMenu.Content
+ [2m183[0m |                         className="z-50 min-w-[200px] bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-1.5 animate-slide-down"
+ [2m184[0m |                         align="end"
+ [2m185[0m |                         sideOffset={8}
+ [2m186[0m |                       >
+ [2m187[0m |                         <div className="px-3 py-2.5 border-b border-slate-100 dark:border-slate-700 mb-1">
+ [2m188[0m |                           <p className="font-semibold text-slate-900 dark:text-white text-sm">{user.full_name}</p>
+ [2m189[0m |                           <p className="text-xs text-slate-500 dark:text-slate-400">@{user.username}</p>
+ [2m190[0m |                         </div>
+ [2m191[0m | 
+ [2m192[0m |                         <DropdownMenu.Item asChild>
+ [2m193[0m |                           <Link href={`/${user.username}`} className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition-colors">
+ [2m194[0m |                             <UserCircle className="w-4 h-4" />
+ [2m195[0m |                             {t('nav.profile')}
+ [2m196[0m |                           </Link>
+ [2m197[0m |                         </DropdownMenu.Item>
+ [2m198[0m |                         <DropdownMenu.Item asChild>
+ [2m199[0m |                           <Link href="/settings" className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition-colors">
+ [2m200[0m |                             <Settings className="w-4 h-4" />
+ [2m201[0m |                             {t('nav.settings')}
+ [2m202[0m |                           </Link>
+ [2m203[0m |                         </DropdownMenu.Item>
+ [2m204[0m | 
+ [2m205[0m |                         {(user.role === 'admin' || user.role === 'moderator') && (
+ [2m206[0m |                           <>
+ [2m207[0m |                             <DropdownMenu.Separator className="my-1 border-t border-slate-100 dark:border-slate-700" />
+ [2m208[0m |                             {user.role === 'admin' && (
+ [2m209[0m |                               <DropdownMenu.Item asChild>
+ [2m210[0m |                                 <Link href="/admin" className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-purple-700 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 cursor-pointer transition-colors">
+ [2m211[0m |                                   <Shield className="w-4 h-4" />
+ [2m212[0m |                                   {t('nav.admin')}
+ [2m213[0m |                                 </Link>
+ [2m214[0m |                               </DropdownMenu.Item>
+ [2m215[0m |                             )}
+ [2m216[0m |                             {user.role === 'moderator' && (
+ [2m217[0m |                               <DropdownMenu.Item asChild>
+ [2m218[0m |                                 <Link href="/moderator" className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 cursor-pointer transition-colors">
+ [2m219[0m |                                   <Shield className="w-4 h-4" />
+ [2m220[0m |                                   {t('nav.moderator')}
+ [2m221[0m |                                 </Link>
+ [2m222[0m |                               </DropdownMenu.Item>
+ [2m223[0m |                             )}
+ [2m224[0m |                           </>
+ [2m225[0m |                         )}
+ [2m226[0m | 
+ [2m227[0m |                         <DropdownMenu.Separator className="my-1 border-t border-slate-100 dark:border-slate-700" />
+ [2m228[0m |                         <DropdownMenu.Item
+ [2m229[0m |                           className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 cursor-pointer transition-colors"
+ [2m230[0m |                           onClick={handleSignOut}
+ [2m231[0m |                         >
+ [2m232[0m |                           <LogOut className="w-4 h-4" />
+ [2m233[0m |                           {t('nav.signOut')}
+ [2m234[0m |                         </DropdownMenu.Item>
+ [2m235[0m |                       </DropdownMenu.Content>
+ [2m236[0m |                     </DropdownMenu.Portal>
+ [2m237[0m |                   </DropdownMenu.Root>
+ [2m238[0m |                 </>
+ [2m239[0m |               ) : (
+ [2m240[0m |                 <div className="flex items-center gap-2">
+ [2m241[0m |                   <Link href="/login" className="btn-ghost text-sm px-4 py-2">
+ [2m242[0m |                     {t('nav.signIn')}
+ [2m243[0m |                   </Link>
+ [2m244[0m |                   <Link href="/register" className="btn-primary text-sm px-4 py-2">
+ [2m245[0m |                     {t('nav.joinFree')}
+ [2m246[0m |                   </Link>
+ [2m247[0m |                 </div>
+ [2m248[0m |               )}
+ [2m249[0m |             </>
+ [2m250[0m |           )}
+ [2m251[0m | 
+ [2m252[0m |           {/* Mobile menu toggle */}
+ [2m253[0m |           <button
+ [2m254[0m |             onClick={() => setMobileOpen(!mobileOpen)}
+ [2m255[0m |             className="md:hidden p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+ [2m256[0m |           >
+ [2m257[0m |             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+ [2m258[0m |           </button>
+ [2m259[0m |         </div>
+ [2m260[0m |       </div>
+ [2m261[0m | 
+ [2m262[0m |       {/* Mobile menu */}
+ [2m263[0m |       {mobileOpen && (
+ [2m264[0m |         <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-1 animate-slide-down">
+ [2m265[0m |           <Link href="/" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200" onClick={() => setMobileOpen(false)}>
+ [2m266[0m |             <Home className="w-4 h-4" /> {t('nav.home')}
+ [2m267[0m |           </Link>
+ [2m268[0m |           <Link href="/search" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200" onClick={() => setMobileOpen(false)}>
+ [2m269[0m |             <Search className="w-4 h-4" /> {t('nav.search')}
+ [2m270[0m |           </Link>
+ [2m271[0m |           {user && (
+ [2m272[0m |             <>
+ [2m273[0m |               <Link href="/messages" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200" onClick={() => setMobileOpen(false)}>
+ [2m274[0m |                 <MessageSquare className="w-4 h-4" /> {t('nav.messages')}
+ [2m275[0m |                 {unreadMessages > 0 && <span className="ml-auto badge-red">{unreadMessages}</span>}
+ [2m276[0m |               </Link>
+ [2m277[0m |             </>
+ [2m278[0m |           )}
+ [2m279[0m |           <button
+ [2m280[0m |             onClick={() => { toggleLocale(); setMobileOpen(false); }}
+ [2m281[0m |             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200"
+ [2m282[0m |           >
+ [2m283[0m |             <Globe className="w-4 h-4" />
+ [2m284[0m |             {locale === 'en' ? 'Switch to ខ្មែរ' : 'Switch to English'}
+ [2m285[0m |           </button>
+ [2m286[0m |         </div>
+ [2m287[0m |       )}
+ [2m288[0m |     </header>
+ [2m289[0m |   );
+ [2m290[0m | }
+ [2m291[0m | 
+ [2m292[0m | function cn(...classes: (string | boolean | undefined)[]): string {
+     : [33;1m         ^|[0m
+     :           [33;1m`-- [33;1m`cn` redefined here[0m[0m
+ [2m293[0m |   return classes.filter(Boolean).join(' ');
+ [2m294[0m | }
+     `----
+
+Import trace for requested module:
+./components/layout/Navbar.tsx
+./app/search/page.tsx
+
+./components/layout/Navbar.tsx
+Error: 
+  [31mx[0m the name `cn` is defined multiple times
+     ,-[[36;1;4mC:\Users\najam\Hllo\components\layout\Navbar.tsx[0m:13:1]
+ [2m 13[0m | import { useAuth } from '@/components/providers/AuthProvider';
+ [2m 14[0m | import { useTheme } from '@/components/providers/ThemeProvider';
+ [2m 15[0m | import { createClient } from '@/lib/supabase/client';
+ [2m 16[0m | import { cn } from '@/lib/utils';
+     : [31;1m         ^|[0m
+     :           [31;1m`-- [31;1mprevious definition of `cn` here[0m[0m
+ [2m 17[0m | import toast from 'react-hot-toast';
+ [2m 18[0m | 
+ [2m 19[0m | export default function Navbar() {
+ [2m 20[0m |   const t = useTranslations();
+ [2m 21[0m |   const { user, loading } = useAuth();
+ [2m 22[0m |   const { theme, toggleTheme } = useTheme();
+ [2m 23[0m |   const router = useRouter();
+ [2m 24[0m |   const supabase = createClient();
+ [2m 25[0m | 
+ [2m 26[0m |   const [mobileOpen, setMobileOpen] = useState(false);
+ [2m 27[0m |   const [unreadMessages, setUnreadMessages] = useState(0);
+ [2m 28[0m |   const [unreadNotifs, setUnreadNotifs] = useState(0);
+ [2m 29[0m |   const [locale, setLocale] = useState('en');
+ [2m 30[0m | 
+ [2m 31[0m |   useEffect(() => {
+ [2m 32[0m |     const stored = document.cookie
+ [2m 33[0m |       .split(';')
+ [2m 34[0m |       .find(c => c.trim().startsWith('NEXT_LOCALE='))
+ [2m 35[0m |       ?.split('=')[1] || 'en';
+ [2m 36[0m |     setLocale(stored);
+ [2m 37[0m |   }, []);
+ [2m 38[0m | 
+ [2m 39[0m |   useEffect(() => {
+ [2m 40[0m |     if (!user) return;
+ [2m 41[0m | 
+ [2m 42[0m |     const fetchCounts = async () => {
+ [2m 43[0m |       const [{ count: msgs }, { count: notifs }] = await Promise.all([
+ [2m 44[0m |         supabase.from('messages').select('*', { count: 'exact', head: true })
+ [2m 45[0m |           .eq('receiver_id', user.id).eq('is_read', false),
+ [2m 46[0m |         supabase.from('notifications').select('*', { count: 'exact', head: true })
+ [2m 47[0m |           .eq('user_id', user.id).eq('is_read', false),
+ [2m 48[0m |       ]);
+ [2m 49[0m |       setUnreadMessages(msgs || 0);
+ [2m 50[0m |       setUnreadNotifs(notifs || 0);
+ [2m 51[0m |     };
+ [2m 52[0m | 
+ [2m 53[0m |     fetchCounts();
+ [2m 54[0m |   }, [user, supabase]);
+ [2m 55[0m | 
+ [2m 56[0m |   const handleSignOut = async () => {
+ [2m 57[0m |     await supabase.auth.signOut();
+ [2m 58[0m |     router.push('/');
+ [2m 59[0m |     router.refresh();
+ [2m 60[0m |     toast.success('Signed out successfully');
+ [2m 61[0m |   };
+ [2m 62[0m | 
+ [2m 63[0m |   const toggleLocale = () => {
+ [2m 64[0m |     const next = locale === 'en' ? 'kh' : 'en';
+ [2m 65[0m |     document.cookie = `NEXT_LOCALE=${next}; path=/; max-age=31536000`;
+ [2m 66[0m |     setLocale(next);
+ [2m 67[0m |     window.location.reload();
+ [2m 68[0m |   };
+ [2m 69[0m | 
+ [2m 70[0m |   return (
+ [2m 71[0m |     <header className="sticky top-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800">
+ [2m 72[0m |       <div className="max-w-7xl mx-auto px-4 h-14 flex items-center gap-3">
+ [2m 73[0m |         {/* Logo */}
+ [2m 74[0m |         <Link href="/" className="flex items-center gap-2 shrink-0 group">
+ [2m 75[0m |           <div className="w-8 h-8 rounded-lg csa-hero-gradient flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+ [2m 76[0m |             <span className="text-lg">🏛️</span>
+ [2m 77[0m |           </div>
+ [2m 78[0m |           <span className="font-bold text-lg text-slate-900 dark:text-white tracking-tight">
+ [2m 79[0m |             <span className="text-transparent bg-clip-text bg-gradient-to-r from-csa-blue-900 to-csa-purple-600">CSA</span>
+ [2m 80[0m |           </span>
+ [2m 81[0m |         </Link>
+ [2m 82[0m | 
+ [2m 83[0m |         {/* Search bar */}
+ [2m 84[0m |         <div className="hidden md:flex flex-1 max-w-md mx-4">
+ [2m 85[0m |           <Link
+ [2m 86[0m |             href="/search"
+ [2m 87[0m |             className="w-full flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-400 text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+ [2m 88[0m |           >
+ [2m 89[0m |             <Search className="w-4 h-4" />
+ [2m 90[0m |             <span>{t('nav.search')}</span>
+ [2m 91[0m |           </Link>
+ [2m 92[0m |         </div>
+ [2m 93[0m | 
+ [2m 94[0m |         {/* Center nav icons */}
+ [2m 95[0m |         <nav className="hidden md:flex items-center gap-1 absolute left-1/2 transform -translate-x-1/2">
+ [2m 96[0m |           {[
+ [2m 97[0m |             { href: '/', icon: Home, label: t('nav.home') },
+ [2m 98[0m |             { href: '/search', icon: Search, label: t('nav.discover') },
+ [2m 99[0m |             { href: '/universities', icon: BookOpen, label: 'Universities' },
+ [2m100[0m |           ].map(({ href, icon: Icon, label }) => (
+ [2m101[0m |             <Link
+ [2m102[0m |               key={href}
+ [2m103[0m |               href={href}
+ [2m104[0m |               className="p-2.5 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-csa-blue-900 dark:hover:text-blue-400 transition-all"
+ [2m105[0m |               title={label}
+ [2m106[0m |             >
+ [2m107[0m |               <Icon className="w-5 h-5" />
+ [2m108[0m |             </Link>
+ [2m109[0m |           ))}
+ [2m110[0m |         </nav>
+ [2m111[0m | 
+ [2m112[0m |         {/* Right actions */}
+ [2m113[0m |         <div className="ml-auto flex items-center gap-2">
+ [2m114[0m |           {/* Language toggle */}
+ [2m115[0m |           <button
+ [2m116[0m |             onClick={toggleLocale}
+ [2m117[0m |             className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+ [2m118[0m |             title="Toggle language"
+ [2m119[0m |           >
+ [2m120[0m |             <Globe className="w-4 h-4" />
+ [2m121[0m |             <span>{locale === 'en' ? 'EN' : 'ខ្មែរ'}</span>
+ [2m122[0m |           </button>
+ [2m123[0m | 
+ [2m124[0m |           {/* Dark mode toggle */}
+ [2m125[0m |           <button
+ [2m126[0m |             onClick={toggleTheme}
+ [2m127[0m |             className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+ [2m128[0m |             aria-label="Toggle dark mode"
+ [2m129[0m |           >
+ [2m130[0m |             {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+ [2m131[0m |           </button>
+ [2m132[0m | 
+ [2m133[0m |           {!loading && (
+ [2m134[0m |             <>
+ [2m135[0m |               {user ? (
+ [2m136[0m |                 <>
+ [2m137[0m |                   {/* Messages */}
+ [2m138[0m |                   <Link
+ [2m139[0m |                     href="/messages"
+ [2m140[0m |                     className="relative p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+ [2m141[0m |                     aria-label={t('nav.messages')}
+ [2m142[0m |                   >
+ [2m143[0m |                     <MessageSquare className="w-5 h-5" />
+ [2m144[0m |                     {unreadMessages > 0 && (
+ [2m145[0m |                       <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 font-bold">
+ [2m146[0m |                         {unreadMessages > 9 ? '9+' : unreadMessages}
+ [2m147[0m |                       </span>
+ [2m148[0m |                     )}
+ [2m149[0m |                   </Link>
+ [2m150[0m | 
+ [2m151[0m |                   {/* Notifications */}
+ [2m152[0m |                   <Link
+ [2m153[0m |                     href="/notifications"
+ [2m154[0m |                     className="relative p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+ [2m155[0m |                     aria-label={t('nav.notifications')}
+ [2m156[0m |                   >
+ [2m157[0m |                     <Bell className="w-5 h-5" />
+ [2m158[0m |                     {unreadNotifs > 0 && (
+ [2m159[0m |                       <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 font-bold">
+ [2m160[0m |                         {unreadNotifs > 9 ? '9+' : unreadNotifs}
+ [2m161[0m |                       </span>
+ [2m162[0m |                     )}
+ [2m163[0m |                   </Link>
+ [2m164[0m | 
+ [2m165[0m |                   {/* User menu */}
+ [2m166[0m |                   <DropdownMenu.Root>
+ [2m167[0m |                     <DropdownMenu.Trigger asChild>
+ [2m168[0m |                       <button className="flex items-center gap-2 p-1 pr-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all group">
+ [2m169[0m |                         <div className="w-8 h-8 rounded-lg overflow-hidden bg-gradient-to-br from-csa-blue-900 to-csa-purple-600 flex items-center justify-center">
+ [2m170[0m |                           {user.avatar_url ? (
+ [2m171[0m |                             <img src={user.avatar_url} alt={user.full_name} className="w-full h-full object-cover" />
+ [2m172[0m |                           ) : (
+ [2m173[0m |                             <span className="text-white font-semibold text-sm">
+ [2m174[0m |                               {user.full_name.charAt(0).toUpperCase()}
+ [2m175[0m |                             </span>
+ [2m176[0m |                           )}
+ [2m177[0m |                         </div>
+ [2m178[0m |                         <ChevronDown className="w-3.5 h-3.5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-200 transition-transform group-data-[state=open]:rotate-180" />
+ [2m179[0m |                       </button>
+ [2m180[0m |                     </DropdownMenu.Trigger>
+ [2m181[0m |                     <DropdownMenu.Portal>
+ [2m182[0m |                       <DropdownMenu.Content
+ [2m183[0m |                         className="z-50 min-w-[200px] bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-1.5 animate-slide-down"
+ [2m184[0m |                         align="end"
+ [2m185[0m |                         sideOffset={8}
+ [2m186[0m |                       >
+ [2m187[0m |                         <div className="px-3 py-2.5 border-b border-slate-100 dark:border-slate-700 mb-1">
+ [2m188[0m |                           <p className="font-semibold text-slate-900 dark:text-white text-sm">{user.full_name}</p>
+ [2m189[0m |                           <p className="text-xs text-slate-500 dark:text-slate-400">@{user.username}</p>
+ [2m190[0m |                         </div>
+ [2m191[0m | 
+ [2m192[0m |                         <DropdownMenu.Item asChild>
+ [2m193[0m |                           <Link href={`/${user.username}`} className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition-colors">
+ [2m194[0m |                             <UserCircle className="w-4 h-4" />
+ [2m195[0m |                             {t('nav.profile')}
+ [2m196[0m |                           </Link>
+ [2m197[0m |                         </DropdownMenu.Item>
+ [2m198[0m |                         <DropdownMenu.Item asChild>
+ [2m199[0m |                           <Link href="/settings" className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 cursor-pointer transition-colors">
+ [2m200[0m |                             <Settings className="w-4 h-4" />
+ [2m201[0m |                             {t('nav.settings')}
+ [2m202[0m |                           </Link>
+ [2m203[0m |                         </DropdownMenu.Item>
+ [2m204[0m | 
+ [2m205[0m |                         {(user.role === 'admin' || user.role === 'moderator') && (
+ [2m206[0m |                           <>
+ [2m207[0m |                             <DropdownMenu.Separator className="my-1 border-t border-slate-100 dark:border-slate-700" />
+ [2m208[0m |                             {user.role === 'admin' && (
+ [2m209[0m |                               <DropdownMenu.Item asChild>
+ [2m210[0m |                                 <Link href="/admin" className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-purple-700 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20 cursor-pointer transition-colors">
+ [2m211[0m |                                   <Shield className="w-4 h-4" />
+ [2m212[0m |                                   {t('nav.admin')}
+ [2m213[0m |                                 </Link>
+ [2m214[0m |                               </DropdownMenu.Item>
+ [2m215[0m |                             )}
+ [2m216[0m |                             {user.role === 'moderator' && (
+ [2m217[0m |                               <DropdownMenu.Item asChild>
+ [2m218[0m |                                 <Link href="/moderator" className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 cursor-pointer transition-colors">
+ [2m219[0m |                                   <Shield className="w-4 h-4" />
+ [2m220[0m |                                   {t('nav.moderator')}
+ [2m221[0m |                                 </Link>
+ [2m222[0m |                               </DropdownMenu.Item>
+ [2m223[0m |                             )}
+ [2m224[0m |                           </>
+ [2m225[0m |                         )}
+ [2m226[0m | 
+ [2m227[0m |                         <DropdownMenu.Separator className="my-1 border-t border-slate-100 dark:border-slate-700" />
+ [2m228[0m |                         <DropdownMenu.Item
+ [2m229[0m |                           className="flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 cursor-pointer transition-colors"
+ [2m230[0m |                           onClick={handleSignOut}
+ [2m231[0m |                         >
+ [2m232[0m |                           <LogOut className="w-4 h-4" />
+ [2m233[0m |                           {t('nav.signOut')}
+ [2m234[0m |                         </DropdownMenu.Item>
+ [2m235[0m |                       </DropdownMenu.Content>
+ [2m236[0m |                     </DropdownMenu.Portal>
+ [2m237[0m |                   </DropdownMenu.Root>
+ [2m238[0m |                 </>
+ [2m239[0m |               ) : (
+ [2m240[0m |                 <div className="flex items-center gap-2">
+ [2m241[0m |                   <Link href="/login" className="btn-ghost text-sm px-4 py-2">
+ [2m242[0m |                     {t('nav.signIn')}
+ [2m243[0m |                   </Link>
+ [2m244[0m |                   <Link href="/register" className="btn-primary text-sm px-4 py-2">
+ [2m245[0m |                     {t('nav.joinFree')}
+ [2m246[0m |                   </Link>
+ [2m247[0m |                 </div>
+ [2m248[0m |               )}
+ [2m249[0m |             </>
+ [2m250[0m |           )}
+ [2m251[0m | 
+ [2m252[0m |           {/* Mobile menu toggle */}
+ [2m253[0m |           <button
+ [2m254[0m |             onClick={() => setMobileOpen(!mobileOpen)}
+ [2m255[0m |             className="md:hidden p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+ [2m256[0m |           >
+ [2m257[0m |             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+ [2m258[0m |           </button>
+ [2m259[0m |         </div>
+ [2m260[0m |       </div>
+ [2m261[0m | 
+ [2m262[0m |       {/* Mobile menu */}
+ [2m263[0m |       {mobileOpen && (
+ [2m264[0m |         <div className="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 space-y-1 animate-slide-down">
+ [2m265[0m |           <Link href="/" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200" onClick={() => setMobileOpen(false)}>
+ [2m266[0m |             <Home className="w-4 h-4" /> {t('nav.home')}
+ [2m267[0m |           </Link>
+ [2m268[0m |           <Link href="/search" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200" onClick={() => setMobileOpen(false)}>
+ [2m269[0m |             <Search className="w-4 h-4" /> {t('nav.search')}
+ [2m270[0m |           </Link>
+ [2m271[0m |           {user && (
+ [2m272[0m |             <>
+ [2m273[0m |               <Link href="/messages" className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200" onClick={() => setMobileOpen(false)}>
+ [2m274[0m |                 <MessageSquare className="w-4 h-4" /> {t('nav.messages')}
+ [2m275[0m |                 {unreadMessages > 0 && <span className="ml-auto badge-red">{unreadMessages}</span>}
+ [2m276[0m |               </Link>
+ [2m277[0m |             </>
+ [2m278[0m |           )}
+ [2m279[0m |           <button
+ [2m280[0m |             onClick={() => { toggleLocale(); setMobileOpen(false); }}
+ [2m281[0m |             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium text-slate-700 dark:text-slate-200"
+ [2m282[0m |           >
+ [2m283[0m |             <Globe className="w-4 h-4" />
+ [2m284[0m |             {locale === 'en' ? 'Switch to ខ្មែរ' : 'Switch to English'}
+ [2m285[0m |           </button>
+ [2m286[0m |         </div>
+ [2m287[0m |       )}
+ [2m288[0m |     </header>
+ [2m289[0m |   );
+ [2m290[0m | }
+ [2m291[0m | 
+ [2m292[0m | function cn(...classes: (string | boolean | undefined)[]): string {
+     : [33;1m         ^|[0m
+     :           [33;1m`-- [33;1m`cn` redefined here[0m[0m
+ [2m293[0m |   return classes.filter(Boolean).join(' ');
+ [2m294[0m | }
+     `----
+
+Import trace for requested module:
+./components/layout/Navbar.tsx
+./app/page.tsx
+
+
+> Build failed because of webpack errors
